@@ -1,7 +1,7 @@
 # Comment/uncomment the following line to disable/enable debugging
 #DEBUG = y
 
-EXTRA_CFLAGS += -O2 -I..
+ccflags-y += -O2 -I..
 
 ifneq ($(KERNELRELEASE),)
 # call from kernel build system
@@ -23,7 +23,7 @@ clean:
 	rm -rf *.o *~ core .depend .*.cmd *.ko *.mod.c .tmp_versions
 
 depend .depend dep:
-	$(CC) $(CFLAGS) $(EXTRA_CFLAGS) -M *.c > .depend
+	$(CC) $(CFLAGS) -M *.c > .depend
 
 
 ifeq (.depend,$(wildcard .depend))
